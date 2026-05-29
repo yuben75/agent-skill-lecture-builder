@@ -1,0 +1,42 @@
+page:
+  lang: zh-TW
+  title: "生成式 AI 資訊安全"
+  badge: "Security Lecture | Case Study Driven"
+  hero_title: "生成式 AI<br>資訊安全"
+  subtitle: "用真實工作場景拆解提示注入、資料外洩、RAG 汙染、Agent 工具濫用與治理落地。"
+
+instructor:
+  name: "資安案例講師"
+  tagline: "攻擊情境推演 | 防禦設計 | AI 治理落地"
+  bio: >
+    擅長把抽象風險轉成可演練的案例，協助開發、資安、法遵與業務團隊建立共同語言。<br>
+    本講義聚焦生成式 AI 導入時最常被低估的資料邊界、工具權限與營運監控。
+  avatar: "config/assets/author"
+  stats:
+    - text: "案例導向 **6** 大攻防場景"
+      url: "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+    - text: "對應 **治理、開發、營運** 三層控制"
+      url: "https://www.nist.gov/itl/ai-risk-management-framework"
+  socials:
+    - platform: "GitHub"
+      url: "https://github.com/yuben75"
+
+quotes:
+  opening:
+    text: "生成式 AI 的最大風險，不是模型會不會回答錯，而是它被接到資料、工具與流程之後，錯誤會被自動放大。"
+  closing:
+    text: >
+      安全導入生成式 AI 的核心不是禁止使用，而是讓每一次模型輸出、工具呼叫與資料取用都能被限制、驗證、記錄與回復。
+
+footer:
+  cta: "把 AI 風險拆成可盤點、可演練、可監控的工程與治理控制。"
+  copyright: "© 2026 Generative AI Security Lecture"
+  show_socials: true
+
+seo:
+  site_name: "生成式 AI 資訊安全講義"
+  type: "article"
+  title: "生成式 AI 資訊安全 | 案例導向講義"
+  description: "用實際案例解說生成式 AI 資安風險與防禦設計，涵蓋提示注入、資料外洩、RAG 汙染、Agent 工具濫用、供應鏈與治理。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/generative-ai-security/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/generative-ai-security/"
