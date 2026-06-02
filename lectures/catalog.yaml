@@ -1,0 +1,21 @@
+lectures:
+  - slug: generative-ai-security
+    type: topic
+    title: "生成式 AI 資安"
+    path: "lectures/topic/generative-ai-security"
+    status: published
+    description: "由主題生成的生成式 AI 資安講義。"
+
+  - slug: openai-codex-claude-code
+    type: topic
+    title: "OpenAI Codex 及 Claude Code"
+    path: "lectures/topic/openai-codex-claude-code"
+    status: published
+    description: "由主題生成的 AI coding agent 對照講義。"
+
+  - slug: example
+    type: draft
+    title: "Agent Skill 講義範例"
+    path: "lectures/draft/example"
+    status: example
+    description: "由草稿整理成講義的示範資料。"

@@ -38,5 +38,5 @@ seo:
   type: "article"
   title: "生成式 AI 資訊安全 | 案例導向講義"
   description: "用實際案例解說生成式 AI 資安風險與防禦設計，涵蓋提示注入、資料外洩、RAG 汙染、Agent 工具濫用、供應鏈與治理。"
-  image: "https://yuben75.github.io/agent-skill-lecture-builder/generative-ai-security/assets/og-image.jpg"
-  url: "https://yuben75.github.io/agent-skill-lecture-builder/generative-ai-security/"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/generative-ai-security/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/generative-ai-security/"

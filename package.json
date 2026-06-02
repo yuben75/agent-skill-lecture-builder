@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "build": "node .agents/skills/course-page-generator/scripts/build.mjs",
-    "build:example": "node .agents/skills/course-page-generator/scripts/build.mjs example",
+    "build:example": "node .agents/skills/course-page-generator/scripts/build.mjs lectures/draft/example",
+    "build:generative-ai-security": "node .agents/skills/course-page-generator/scripts/build.mjs lectures/topic/generative-ai-security",
+    "build:openai-codex-claude-code": "node .agents/skills/course-page-generator/scripts/build.mjs lectures/topic/openai-codex-claude-code",
     "dev": "node .agents/skills/course-page-generator/scripts/dev.mjs",
-    "dev:example": "node .agents/skills/course-page-generator/scripts/dev.mjs example",
+    "dev:example": "node .agents/skills/course-page-generator/scripts/dev.mjs lectures/draft/example",
+    "dev:generative-ai-security": "node .agents/skills/course-page-generator/scripts/dev.mjs lectures/topic/generative-ai-security",
+    "dev:openai-codex-claude-code": "node .agents/skills/course-page-generator/scripts/dev.mjs lectures/topic/openai-codex-claude-code",
     "og": "node .agents/skills/course-page-generator/scripts/generate-og.mjs",
-    "og:example": "node .agents/skills/course-page-generator/scripts/generate-og.mjs example",
+    "og:example": "node .agents/skills/course-page-generator/scripts/generate-og.mjs lectures/draft/example",
+    "og:generative-ai-security": "node .agents/skills/course-page-generator/scripts/generate-og.mjs lectures/topic/generative-ai-security",
+    "og:openai-codex-claude-code": "node .agents/skills/course-page-generator/scripts/generate-og.mjs lectures/topic/openai-codex-claude-code",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

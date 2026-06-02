@@ -23,5 +23,5 @@ seo:
   type: "article"
   title: "用 Agent Skill 打造可重複使用的講義網站"
   description: "從 README 講稿轉換成課程網頁，示範如何用 Codex、Vibe Coding 與 Agent Skill 建立可重複使用的講義網站工作流。"
-  image: "https://deancourse.github.io/agent-skill-lecture-builder/example/assets/og-image.jpg"
-  url: "https://deancourse.github.io/agent-skill-lecture-builder/example/"
+  image: "https://deancourse.github.io/agent-skill-lecture-builder/lectures/draft/example/assets/og-image.jpg"
+  url: "https://deancourse.github.io/agent-skill-lecture-builder/lectures/draft/example/"

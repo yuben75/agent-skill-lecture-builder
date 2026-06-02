@@ -23,5 +23,5 @@ seo:
   type: "article"
   title: "OpenAI Codex 及 Claude Code 講義"
   description: "用一份實戰導向的講義，教你怎麼比較 OpenAI Codex 與 Claude Code，並把它們放進真實的 AI agent 工作流。"
-  image: "https://yuben75.github.io/agent-skill-lecture-builder/openai-codex-claude-code/assets/og-image.jpg"
-  url: "https://yuben75.github.io/agent-skill-lecture-builder/openai-codex-claude-code/"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/openai-codex-claude-code/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/openai-codex-claude-code/"
