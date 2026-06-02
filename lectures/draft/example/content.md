@@ -8,7 +8,7 @@
 - 延伸 **團隊協作** | 用 Commit、PR、Worktree、測試把 Vibe Coding 變成長期可用的工程流程
 [/summary]
 
-## 為什麼要把講義做成網站sadasd
+## 為什麼要把講義做成網站
 
 ### 從 PPT 轉向可維護的內容系統
 - 課程主題是 AI 寫程式與 Agent Skill，講義本身也應該反映這種工作方式

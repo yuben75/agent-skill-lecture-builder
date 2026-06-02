@@ -13,7 +13,7 @@
  */
 
 import { createServer } from 'http';
-import { readFileSync, existsSync, statSync, watch } from 'fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'fs';
 import { resolve, dirname, join, extname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
@@ -55,39 +55,15 @@ function runBuild() {
 const sseClients = new Map();
 let nextClientId = 1;
 const SSE_HEARTBEAT_MS = 15000;
+const POLL_INTERVAL_MS = 400;
 
 const LIVE_RELOAD_SNIPPET = `
 <!-- dev server live reload -->
 <script>
 (function(){
-  var es;
-  var reconnectTimer = null;
-
-  function reloadPage() {
-    if (es) es.close();
-    window.location.reload();
-  }
-
-  function connect() {
-    es = new EventSource('/__sse');
-    es.onmessage = function(e){ if(e.data==='reload') reloadPage(); };
-    es.addEventListener('reload', function(){ reloadPage(); });
-    es.onerror = function(){
-      if (es) es.close();
-      if (!reconnectTimer) {
-        reconnectTimer = setTimeout(function(){
-          reconnectTimer = null;
-          connect();
-        }, 1000);
-      }
-    };
-  }
-
-  window.addEventListener('beforeunload', function(){
-    if (es) es.close();
-  });
-
-  connect();
+  var es = new EventSource('/__sse');
+  es.onmessage = function(e){ if(e.data==='reload') location.reload(); };
+  es.onerror = function(){ setTimeout(function(){ location.reload(); }, 2000); };
 })();
 </script>
 </body>`;
@@ -173,7 +149,6 @@ const server = createServer((req, res) => {
 function notifyReload() {
   for (const [clientId, client] of sseClients) {
     try {
-      client.write('event: reload\n');
       client.write('data: reload\n\n');
     } catch {
       sseClients.delete(clientId);
@@ -224,20 +199,73 @@ if (globalConfigDir) watchPaths.push(globalConfigDir);
 
 const WATCH_EXTS = new Set(['.md', '.yaml', '.yml', '.html']);
 const IGNORE_FILES = new Set(['index.html']);
+const trackedFileState = new Map();
 
-for (const dir of watchPaths) {
+function walkFiles(dir, acc = []) {
+  let entries = [];
   try {
-    watch(dir, { recursive: true }, (eventType, filename) => {
-      if (!filename) return;
-      const base = filename.split('/').pop().split('\\').pop();
-      if (IGNORE_FILES.has(base)) return;
-      const ext = extname(filename).toLowerCase();
-      if (WATCH_EXTS.has(ext)) scheduleBuild();
-    });
-  } catch (e) {
-    console.warn(`⚠️  Cannot watch ${dir}: ${e.message}`);
+    entries = readdirSync(dir, { withFileTypes: true });
+  } catch {
+    return acc;
   }
+
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      walkFiles(fullPath, acc);
+      continue;
+    }
+
+    const ext = extname(entry.name).toLowerCase();
+    if (!WATCH_EXTS.has(ext) || IGNORE_FILES.has(entry.name)) continue;
+    acc.push(fullPath);
+  }
+
+  return acc;
 }
+
+function collectWatchedFiles() {
+  const files = new Set();
+  for (const dir of watchPaths) {
+    walkFiles(dir, [...files]).forEach((file) => files.add(file));
+  }
+  return files;
+}
+
+function scanForChanges() {
+  const files = collectWatchedFiles();
+  let changed = false;
+
+  for (const file of files) {
+    let mtimeMs;
+    try {
+      mtimeMs = statSync(file).mtimeMs;
+    } catch {
+      continue;
+    }
+
+    const prev = trackedFileState.get(file);
+    if (prev === undefined) {
+      trackedFileState.set(file, mtimeMs);
+      continue;
+    }
+    if (prev !== mtimeMs) {
+      trackedFileState.set(file, mtimeMs);
+      changed = true;
+    }
+  }
+
+  for (const file of trackedFileState.keys()) {
+    if (files.has(file)) continue;
+    trackedFileState.delete(file);
+    changed = true;
+  }
+
+  if (changed) scheduleBuild();
+}
+
+scanForChanges();
+setInterval(scanForChanges, POLL_INTERVAL_MS);
 
 // ─── Start ───
 
@@ -250,20 +278,27 @@ runBuild();
 
 const origPort = port;
 function tryListen(p) {
-  server.once('error', (err) => {
+  const onError = (err) => {
+    server.off('listening', onListening);
     if (err.code === 'EADDRINUSE') {
       console.log(`   ⚠️  Port ${p} in use, trying ${p + 1}…`);
       tryListen(p + 1);
-    } else {
-      throw err;
+      return;
     }
-  });
-  server.listen(p, () => {
+    throw err;
+  };
+
+  const onListening = () => {
+    server.off('error', onError);
     port = p;
     if (p !== origPort) {
       console.log(`\n   ✅ Port ${origPort} was in use → using port ${port} instead`);
     }
     console.log(`\n   🌐 http://localhost:${port}\n`);
-  });
+  };
+
+  server.once('error', onError);
+  server.once('listening', onListening);
+  server.listen(p);
 }
 tryListen(port);
