@@ -30,6 +30,22 @@ function esc(s) {
     .replace(/"/g, '&quot;');
 }
 
+function detectChromeExecutable() {
+  const candidates = [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) return candidate;
+  }
+
+  return undefined;
+}
+
 // ─── Build OG card HTML ───
 
 function buildOgHtml(cfg) {
@@ -222,10 +238,11 @@ async function main() {
   const { cfg } = loadConfig(courseDir);
 
   const html = buildOgHtml(cfg);
+  const executablePath = detectChromeExecutable();
 
   const browser = await puppeteer.launch({
     headless: 'new',
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+    executablePath,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
