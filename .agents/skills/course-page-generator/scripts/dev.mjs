@@ -52,15 +52,42 @@ function runBuild() {
 
 // ─── SSE clients ───
 
-const sseClients = new Set();
+const sseClients = new Map();
+let nextClientId = 1;
+const SSE_HEARTBEAT_MS = 15000;
 
 const LIVE_RELOAD_SNIPPET = `
 <!-- dev server live reload -->
 <script>
 (function(){
-  var es = new EventSource('/__sse');
-  es.onmessage = function(e){ if(e.data==='reload') location.reload(); };
-  es.onerror = function(){ setTimeout(function(){ location.reload(); }, 2000); };
+  var es;
+  var reconnectTimer = null;
+
+  function reloadPage() {
+    if (es) es.close();
+    window.location.reload();
+  }
+
+  function connect() {
+    es = new EventSource('/__sse');
+    es.onmessage = function(e){ if(e.data==='reload') reloadPage(); };
+    es.addEventListener('reload', function(){ reloadPage(); });
+    es.onerror = function(){
+      if (es) es.close();
+      if (!reconnectTimer) {
+        reconnectTimer = setTimeout(function(){
+          reconnectTimer = null;
+          connect();
+        }, 1000);
+      }
+    };
+  }
+
+  window.addEventListener('beforeunload', function(){
+    if (es) es.close();
+  });
+
+  connect();
 })();
 </script>
 </body>`;
@@ -93,13 +120,19 @@ const server = createServer((req, res) => {
   if (url.pathname === '/__sse') {
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache',
+      'Cache-Control': 'no-cache, no-transform',
       'Connection': 'keep-alive',
       'Access-Control-Allow-Origin': '*',
+      'X-Accel-Buffering': 'no',
     });
+    const clientId = nextClientId++;
+    res.write('retry: 1000\n');
     res.write('data: connected\n\n');
-    sseClients.add(res);
-    req.on('close', () => sseClients.delete(res));
+    sseClients.set(clientId, res);
+
+    req.on('close', () => {
+      sseClients.delete(clientId);
+    });
     return;
   }
 
@@ -138,10 +171,25 @@ const server = createServer((req, res) => {
 // ─── File watcher ───
 
 function notifyReload() {
-  for (const client of sseClients) {
-    client.write('data: reload\n\n');
+  for (const [clientId, client] of sseClients) {
+    try {
+      client.write('event: reload\n');
+      client.write('data: reload\n\n');
+    } catch {
+      sseClients.delete(clientId);
+    }
   }
 }
+
+setInterval(() => {
+  for (const [clientId, client] of sseClients) {
+    try {
+      client.write(': heartbeat\n\n');
+    } catch {
+      sseClients.delete(clientId);
+    }
+  }
+}, SSE_HEARTBEAT_MS);
 
 let buildTimeout = null;
 function scheduleBuild() {
