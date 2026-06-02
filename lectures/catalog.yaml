@@ -1,0 +1,19 @@
+lectures:
+  - slug: generative-ai-security
+    type: topic
+    title: "生成式 AI 資訊安全"
+    path: "lectures/topic/generative-ai-security"
+    status: published
+    description: "以企業實際案例說明生成式 AI 的資安風險、攻擊面與可落地的防護做法。"
+  - slug: ai-agent
+    type: topic
+    title: "AI Agent"
+    path: "lectures/topic/ai-agent"
+    status: published
+    description: "從 AI Agent 的核心元件、OpenAI Codex 與 Claude Code 的差異，到工具權限與實戰工作流設計。"
+  - slug: example
+    type: draft
+    title: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"
+    path: "lectures/draft/example"
+    status: published
+    description: "把口語草稿整理成 Markdown 講義網站，並延伸到 Agent Skill、版本控制與測試工作流。"

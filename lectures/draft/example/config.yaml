@@ -1,0 +1,22 @@
+page:
+  title: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"
+  badge: "Lecture | AI Workflow"
+  hero_title: "用 Vibe Coding 與 Codex<br>打造可重複使用的講義網站"
+  subtitle: "從終端機生成第一版網頁，到建立 Markdown 模板、Agent Skill、版本控制與測試流程，讓 AI 產出真正可維護。"
+
+quotes:
+  opening:
+    text: "AI 讓你更快做出第一版，<br>但模板與流程，才決定它能不能活到下一版。"
+  closing:
+    text: >
+      當 AI 幫你加速產出後，<br>
+      真正該被設計的是規格、流程與維護方式。<br><br>
+      把一次性的成果，變成可重複使用的系統。
+
+seo:
+  site_name: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"
+  type: "article"
+  title: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"
+  description: "示範如何用 Codex、Markdown 模板與 Agent Skill，把一次性的 AI 網頁產出整理成可維護、可擴充的講義工作流。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/example/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/example/"

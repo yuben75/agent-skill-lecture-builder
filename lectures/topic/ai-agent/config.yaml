@@ -1,0 +1,22 @@
+page:
+  title: "AI Agent"
+  badge: "Lecture | AI Workflow"
+  hero_title: "AI Agent"
+  subtitle: "從聊天助手走向可執行的工作夥伴，理解目標導向、工具調用、OpenAI Codex 與 Claude Code 的實戰工作流。"
+
+quotes:
+  opening:
+    text: "模型回答得再好，<br>若不會在邊界內把事情做完，就還不是好用的 Agent。"
+  closing:
+    text: >
+      Agent 的價值從來不只在生成內容，<br>
+      而在於它能不能在限制中持續推進任務。<br><br>
+      把流程設計好，AI 才會成為可靠的工作夥伴。
+
+seo:
+  site_name: "AI Agent"
+  type: "article"
+  title: "AI Agent｜從 OpenAI Codex 到 Claude Code 的實戰工作流"
+  description: "從 AI Agent 的核心定義、工具權限、工作流設計，到 OpenAI Codex 與 Claude Code 的差異與落地方式，建立可持續使用的協作方法。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/ai-agent/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/ai-agent/"

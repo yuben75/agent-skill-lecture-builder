@@ -1,0 +1,22 @@
+page:
+  title: "生成式 AI 資訊安全"
+  badge: "Lecture | AI Security"
+  hero_title: "生成式 AI 資訊安全"
+  subtitle: "用實際案例看懂提示詞注入、RAG 中毒、資料外流與企業可落地的防護藍圖。"
+
+quotes:
+  opening:
+    text: "AI 不會先問你資料能不能出去，<br>它只會先幫你把事情做快。"
+  closing:
+    text: >
+      真正成熟的 AI 治理，<br>
+      不是讓員工不敢用，而是讓企業知道怎麼安全地用。<br><br>
+      先建立邊界，再追求效率。
+
+seo:
+  site_name: "生成式 AI 資訊安全"
+  type: "article"
+  title: "生成式 AI 資訊安全｜從提示詞注入到企業防護藍圖"
+  description: "以企業實際案例講解生成式 AI 的主要資安風險，包含 Prompt Injection、RAG 中毒、Shadow AI、資料外流與事件應變。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/generative-ai-security/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/topic/generative-ai-security/"
