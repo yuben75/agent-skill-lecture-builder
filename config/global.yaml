@@ -3,28 +3,27 @@ page:
   favicon: "https://deanlin.net/images/favicon.png"
 
 instructor:
-  name: "工程師下班有約"
-  tagline: "AI 企業講師 · 擅長團隊培訓 · 百大企業指定"
+  name: "致茂電子"
+  tagline: "電源與系統事業部 PE610 黃煜斌"
   bio: >
-    專注於 AI 開發工作流的實踐與推廣。<br>
-    擅長將複雜的技術概念轉化為可落地的工作流程，讓團隊真正提升開發效率而非盲目追逐工具。
+    韌體工程師
   avatar: "config/assets/author"
   stats:
-    - text: "📚 出版 **7** 本專業書籍"
-      url: "https://www.tenlong.com.tw/search?keyword=%E6%9E%97%E9%BC%8E%E6%B7%B5"
-    - text: "🎤 超過 **100** 場講座"
-      url: "https://www.youtube.com/@dean-lin"
-    - text: "✍️ 發表超過 **400** 篇文章"
-      url: "https://medium.com/@dean-lin"
+    #- text: "📚 出版 **7** 本專業書籍"
+    #  url: "https://www.tenlong.com.tw/search?keyword=%E6%9E%97%E9%BC%8E%E6%B7%B5"
+    #- text: "🎤 超過 **100** 場講座"
+    #  url: "https://www.youtube.com/@dean-lin"
+    #- text: "✍️ 發表超過 **400** 篇文章"
+    #  url: "https://medium.com/@dean-lin"
   socials:
-    - platform: "Facebook"
-      url: "https://www.facebook.com/dean.lin.profile"
-    - platform: "YouTube"
-      url: "https://www.youtube.com/@dean-lin"
-    - platform: "Medium"
-      url: "https://medium.com/@dean-lin"
-    - platform: "Threads"
-      url: "https://www.threads.net/@dean.lin"
+    #- platform: "Facebook"
+    #  url: "https://www.facebook.com/dean.lin.profile"
+    #- platform: "YouTube"
+    #  url: "https://www.youtube.com/@dean-lin"
+    #- platform: "Medium"
+    #  url: "https://medium.com/@dean-lin"
+    #- platform: "Threads"
+    #  url: "https://www.threads.net/@dean.lin"
 
 quotes:
   opening:
@@ -42,5 +41,5 @@ seo:
 
 footer:
   cta: "歡迎追蹤我的社群，獲取更多 AI 開發實戰內容"
-  copyright: "© 工程師下班有約"
+  #copyright: "© 工程師下班有約"
   show_socials: true

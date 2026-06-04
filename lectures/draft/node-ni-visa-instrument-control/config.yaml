@@ -1,0 +1,22 @@
+page:
+  title: "Node 整合 NI-VISA 儀器控制：自動化測試平台架構"
+  badge: "Lecture | Instrument Automation"
+  hero_title: "Node 整合 NI-VISA<br>儀器控制平台架構"
+  subtitle: "從 Server 測試知識管理，到 Client Local Runner、Driver Wrapper、SCPI/Binary 通訊與報告追溯，規劃可落地的自動化測試平台。"
+
+quotes:
+  opening:
+    text: "儀器控制不是把命令送出去而已，<br>真正困難的是版本、抽象、追溯與本機執行可靠性。"
+  closing:
+    text: >
+      先把一台儀器、一條流程、一份報告跑通，<br>
+      再把命令集、流程編輯器與版本治理逐步產品化。<br><br>
+      這才是自動化測試平台能長期維護的路徑。
+
+seo:
+  site_name: "Node 整合 NI-VISA 儀器控制：自動化測試平台架構"
+  type: "article"
+  title: "Node 整合 NI-VISA 儀器控制：自動化測試平台架構"
+  description: "將 NI-VISA、SCPI、Binary 通訊與 Local Runner 整合為 Client/Server 自動化測試平台，涵蓋儀器型號管理、命令集轉換、測試包版本、報告上傳與追溯。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/node-ni-visa-instrument-control/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/node-ni-visa-instrument-control/"

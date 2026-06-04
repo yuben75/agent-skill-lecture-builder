@@ -11,6 +11,12 @@ lectures:
     path: "lectures/topic/ai-agent"
     status: published
     description: "從 AI Agent 的核心元件、OpenAI Codex 與 Claude Code 的差異，到工具權限與實戰工作流設計。"
+  - slug: node-ni-visa-instrument-control
+    type: draft
+    title: "Node 整合 NI-VISA 儀器控制：自動化測試平台架構"
+    path: "lectures/draft/node-ni-visa-instrument-control"
+    status: published
+    description: "從 Server 測試知識管理、Client Local Runner，到 Driver Wrapper、SCPI/Binary 通訊與報告追溯的自動化測試平台規劃。"
   - slug: example
     type: draft
     title: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"
