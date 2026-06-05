@@ -1,0 +1,22 @@
+page:
+  title: "TLS 安全通訊技術與 CCS/V2G 應用實務"
+  badge: "Lecture | EV Charging Security"
+  hero_title: "TLS 安全通訊技術<br>與 CCS/V2G 應用實務"
+  subtitle: "從 TLS 1.2/1.3、憑證鏈、OpenSSL API 與 Wireshark 除錯，建立 EVCC/SECC 與 Plug & Charge 的安全通訊實作能力。"
+
+quotes:
+  opening:
+    text: "在 V2G 通訊中，能連線只是起點；<br>能驗證、能加密、能追溯，才是安全通訊。"
+  closing:
+    text: >
+      TLS 不是車樁通訊外圍的加密選項，<br>
+      而是 Plug & Charge、合約授權與跨角色信任的基礎。<br><br>
+      工程實作要同時看懂協定、憑證、API 與封包。
+
+seo:
+  site_name: "TLS 安全通訊技術與 CCS/V2G 應用實務"
+  type: "article"
+  title: "TLS 安全通訊技術與 CCS/V2G 應用實務"
+  description: "面向韌體、EVSE、V2G 與測試工程師的 TLS 講義，涵蓋 TLS 1.2/1.3、OpenSSL、憑證鏈、CCS Plug & Charge、DIN 70121、ISO 15118-2 與 ISO 15118-20。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/tls-v2g-ccs-secure-communication/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/tls-v2g-ccs-secure-communication/"

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">TLS 1.2 與 TLS 1.3 相容性設定圖</title>
+  <desc id="desc">TLS 相容性由版本範圍、cipher suite、supported groups、signature algorithms、憑證鏈與測試 profile 共同決定。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 34px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 21px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #0f172a; }
+      .small { font: 500 16px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #475569; }
+      .tiny { font: 500 14px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #64748b; }
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #dbe4ef; stroke-width: 2; rx: 16; }
+      .blue { fill: #eff6ff; stroke: #93c5fd; stroke-width: 2; rx: 14; }
+      .green { fill: #ecfdf5; stroke: #86efac; stroke-width: 2; rx: 14; }
+      .amber { fill: #fffbeb; stroke: #fcd34d; stroke-width: 2; rx: 14; }
+      .rose { fill: #fff1f2; stroke: #fda4af; stroke-width: 2; rx: 14; }
+      .dark { fill: #111827; rx: 18; }
+      .white { font: 700 22px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #ffffff; }
+      .line { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 2.5; stroke-dasharray: 8 8; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="820" class="bg"/>
+  <text x="60" y="70" class="title">TLS 1.2 / TLS 1.3 相容性設定圖</text>
+  <text x="60" y="106" class="small">相容性不是單一版本開關，而是多個協商條件同時成立。</text>
+
+  <rect x="420" y="145" width="360" height="72" class="dark"/>
+  <text x="475" y="190" class="white">SSL_CTX Compatibility Profile</text>
+
+  <rect x="80" y="280" width="300" height="145" class="blue"/>
+  <text x="110" y="320" class="label">Version Range</text>
+  <text x="110" y="352" class="small">min: TLS1_2_VERSION</text>
+  <text x="110" y="380" class="small">max: TLS1_3_VERSION</text>
+  <text x="110" y="408" class="tiny">測試 profile 可鎖定單一版本</text>
+
+  <rect x="450" y="280" width="300" height="145" class="green"/>
+  <text x="480" y="320" class="label">Cipher Settings</text>
+  <text x="480" y="352" class="small">TLS 1.2: cipher_list</text>
+  <text x="480" y="380" class="small">TLS 1.3: ciphersuites</text>
+  <text x="480" y="408" class="tiny">兩組 API 不可互相替代</text>
+
+  <rect x="820" y="280" width="300" height="145" class="amber"/>
+  <text x="850" y="320" class="label">Key Exchange Inputs</text>
+  <text x="850" y="352" class="small">groups: P-256 / X25519</text>
+  <text x="850" y="380" class="small">sigalgs: ECDSA / RSA-PSS</text>
+  <text x="850" y="408" class="tiny">影響 ECDHE 與簽章協商</text>
+
+  <rect x="255" y="515" width="300" height="145" class="rose"/>
+  <text x="285" y="555" class="label">Certificate Policy</text>
+  <text x="285" y="587" class="small">CA trust / chain order</text>
+  <text x="285" y="615" class="small">key usage / hostname</text>
+  <text x="285" y="643" class="tiny">常被誤判為 TLS 版本問題</text>
+
+  <rect x="645" y="515" width="300" height="145" class="box"/>
+  <text x="675" y="555" class="label">Diagnostics</text>
+  <text x="675" y="587" class="small">info callback / verify log</text>
+  <text x="675" y="615" class="small">key log / Wireshark</text>
+  <text x="675" y="643" class="tiny">確認實際 negotiated result</text>
+
+  <path d="M500 217 L280 280" class="line"/>
+  <path d="M600 217 L600 280" class="line"/>
+  <path d="M700 217 L920 280" class="line"/>
+  <path d="M230 425 L380 515" class="dash"/>
+  <path d="M600 425 L520 515" class="dash"/>
+  <path d="M970 425 L860 515" class="dash"/>
+
+  <rect x="100" y="710" width="1000" height="54" fill="#ffffff" stroke="#dbe4ef" rx="14"/>
+  <text x="132" y="743" class="small">除錯順序：先看 negotiated version/cipher，再看 alert、verify result、certificate chain、groups 與 signature algorithms。</text>
+</svg>

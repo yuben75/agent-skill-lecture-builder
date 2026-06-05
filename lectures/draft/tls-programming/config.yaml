@@ -1,0 +1,22 @@
+page:
+  title: "TLS 程式設計的講義"
+  badge: "Lecture | Secure Socket Programming"
+  hero_title: "TLS 程式設計<br>從 Socket 到 OpenSSL 實作"
+  subtitle: "聚焦 TLS socket 實作、OpenSSL API/callback、錯誤處理，以及 TLS 1.2/TLS 1.3 相容性的程式設定。"
+
+quotes:
+  opening:
+    text: "TLS 程式設計不是把 recv 換成 SSL_read，<br>而是把連線、憑證、版本、cipher 與狀態機一起設計好。"
+  closing:
+    text: >
+      能連上只代表 handshake 成功，<br>
+      能驗證、能觀測、能相容，才代表 TLS 程式設計真的完成。<br><br>
+      把安全設定寫成可測試的程式結構，後續維護才有底氣。
+
+seo:
+  site_name: "TLS 程式設計的講義"
+  type: "article"
+  title: "TLS 程式設計的講義"
+  description: "面向工程師的 TLS socket 程式設計講義，涵蓋 OpenSSL SSL_CTX、SSL、BIO、憑證驗證、callback、SSL_read/SSL_write、非阻塞 I/O，以及 TLS 1.2/TLS 1.3 相容設定。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/tls-programming/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/tls-programming/"

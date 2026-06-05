@@ -23,6 +23,18 @@ lectures:
     path: "lectures/draft/node-visa-test-runner-platform"
     status: published
     description: "依據 Node 整合 NI-VISA 草稿，整理 Server 測試資產管理、Client Local Runner、Python/pyVISA 儀器控制、Driver Wrapper、SCPI/Binary 通訊與測試報告追溯。"
+  - slug: tls-v2g-ccs-secure-communication
+    type: draft
+    title: "TLS 安全通訊技術與 CCS/V2G 應用實務"
+    path: "lectures/draft/tls-v2g-ccs-secure-communication"
+    status: published
+    description: "從 TLS 1.2/1.3、憑證鏈、OpenSSL API 與 Wireshark 除錯，銜接 CCS Plug & Charge、DIN 70121、ISO 15118-2 與 ISO 15118-20 的安全通訊實作。"
+  - slug: tls-programming
+    type: draft
+    title: "TLS 程式設計的講義"
+    path: "lectures/draft/tls-programming"
+    status: published
+    description: "聚焦 TLS socket 實作、OpenSSL API/callback、SSL_read/SSL_write、非阻塞 I/O，以及 TLS 1.2/TLS 1.3 相容性的程式設定。"
   - slug: example
     type: draft
     title: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"

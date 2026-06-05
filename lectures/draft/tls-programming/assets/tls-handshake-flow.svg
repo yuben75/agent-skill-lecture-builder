@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">TLS Handshake 與資料收發流程圖</title>
+  <desc id="desc">Client 與 Server 先建立 TCP，再執行 TLS handshake，完成憑證驗證與 Finished 後，才用 SSL_write 與 SSL_read 傳送受保護資料。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#243043"/>
+    </marker>
+    <style>
+      .title { font: 700 34px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 16px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #475569; }
+      .laneTitle { font: 700 24px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #ffffff; }
+      .stepTitle { font: 700 18px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #0f172a; }
+      .stepText { font: 500 14px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #64748b; }
+      .msg { font: 700 15px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #334155; }
+      .note { font: 500 15px "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; fill: #475569; }
+      .bg { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #dbe4ef; stroke-width: 2; rx: 18; }
+      .clientHead { fill: #2563eb; rx: 16; }
+      .serverHead { fill: #0f766e; rx: 16; }
+      .step { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .data { fill: #ecfeff; stroke: #67e8f9; stroke-width: 2; rx: 12; }
+      .eventLine { stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 6 8; }
+      .arrow { stroke: #243043; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .arrowBack { stroke: #243043; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .close { stroke: #64748b; stroke-width: 2.5; fill: none; stroke-dasharray: 8 8; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="820" class="bg"/>
+  <text x="60" y="72" class="title">TLS Handshake 與資料收發流程圖</text>
+  <text x="60" y="108" class="subtitle">把 TCP 連線、TLS 握手、憑證驗證、加密資料收發與正常關閉拆成可對照的程式步驟。</text>
+
+  <rect x="70" y="145" width="1060" height="585" class="panel"/>
+
+  <rect x="130" y="180" width="360" height="60" class="clientHead"/>
+  <text x="310" y="218" class="laneTitle" text-anchor="middle">Client</text>
+  <rect x="710" y="180" width="360" height="60" class="serverHead"/>
+  <text x="890" y="218" class="laneTitle" text-anchor="middle">Server</text>
+
+  <line x1="310" y1="255" x2="310" y2="695" class="eventLine"/>
+  <line x1="890" y1="255" x2="890" y2="695" class="eventLine"/>
+
+  <rect x="150" y="285" width="320" height="70" class="step"/>
+  <text x="180" y="315" class="stepTitle">socket() / connect()</text>
+  <text x="180" y="338" class="stepText">建立 TCP client stream</text>
+
+  <rect x="730" y="285" width="320" height="70" class="step"/>
+  <text x="760" y="315" class="stepTitle">listen() / accept()</text>
+  <text x="760" y="338" class="stepText">接受 TCP connection</text>
+
+  <text x="600" y="297" class="msg" text-anchor="middle">TCP stream ready</text>
+  <path d="M470 320 H730" class="arrow"/>
+
+  <rect x="150" y="400" width="320" height="70" class="step"/>
+  <text x="180" y="430" class="stepTitle">SSL_connect()</text>
+  <text x="180" y="453" class="stepText">送出 ClientHello / SNI / ALPN</text>
+
+  <rect x="730" y="400" width="320" height="70" class="step"/>
+  <text x="760" y="430" class="stepTitle">SSL_accept()</text>
+  <text x="760" y="453" class="stepText">選定版本、cipher 與憑證</text>
+
+  <text x="600" y="398" class="msg" text-anchor="middle">ClientHello</text>
+  <path d="M470 420 H730" class="arrow"/>
+  <text x="600" y="473" class="msg" text-anchor="middle">ServerHello + Certificate</text>
+  <path d="M730 445 H470" class="arrowBack"/>
+
+  <rect x="150" y="520" width="320" height="70" class="step"/>
+  <text x="180" y="550" class="stepTitle">verify chain + Finished</text>
+  <text x="180" y="573" class="stepText">hostname / CA / signature check</text>
+
+  <rect x="730" y="520" width="320" height="70" class="step"/>
+  <text x="760" y="550" class="stepTitle">handshake done</text>
+  <text x="760" y="573" class="stepText">session 與 negotiated result 建立</text>
+
+  <text x="600" y="530" class="msg" text-anchor="middle">Finished</text>
+  <path d="M470 555 H730" class="arrow"/>
+
+  <rect x="150" y="635" width="320" height="70" class="data"/>
+  <text x="180" y="665" class="stepTitle">SSL_write() / SSL_read()</text>
+  <text x="180" y="688" class="stepText">明文進入 TLS 後變成 encrypted record</text>
+
+  <rect x="730" y="635" width="320" height="70" class="data"/>
+  <text x="760" y="665" class="stepTitle">SSL_read() / SSL_write()</text>
+  <text x="760" y="688" class="stepText">解密後交給 application protocol</text>
+
+  <text x="600" y="645" class="msg" text-anchor="middle">encrypted application data</text>
+  <path d="M470 670 H730" class="arrow"/>
+  <path d="M730 690 H470" class="arrowBack"/>
+
+  <path d="M310 705 C390 765 810 765 890 705" class="close"/>
+  <text x="600" y="782" class="note" text-anchor="middle">正常關閉：SSL_shutdown() 送出 close_notify，再釋放 SSL 與 socket</text>
+</svg>
