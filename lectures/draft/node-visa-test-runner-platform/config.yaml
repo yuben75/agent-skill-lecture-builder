@@ -1,0 +1,22 @@
+page:
+  title: "Node VISA Test Runner Platform：自動化儀器測試平台規劃"
+  badge: "Lecture | Test Automation"
+  hero_title: "Node VISA<br>Test Runner Platform"
+  subtitle: "從 Node.js、Python/pyVISA、NI-VISA、SCPI、Binary 通訊到 Local Runner，規劃可版本化、可追溯、可落地的 Client/Server 自動化測試平台。"
+
+quotes:
+  opening:
+    text: "儀器控制的關鍵不是送出命令，<br>而是把命令、流程、版本與報告整理成可治理的平台。"
+  closing:
+    text: >
+      先讓一台儀器、一個測試包、一份報告端到端跑通，<br>
+      再擴充命令集、流程編輯器與版本治理。<br><br>
+      這會比一開始追求完整平台更容易落地。
+
+seo:
+  site_name: "Node VISA Test Runner Platform：自動化儀器測試平台規劃"
+  type: "article"
+  title: "Node VISA Test Runner Platform：自動化儀器測試平台規劃"
+  description: "依據 Node 整合 NI-VISA 儀器控制草稿，整理 Client/Server 自動化測試平台設計，涵蓋 Server 測試資產管理、Local Runner、Python/pyVISA 儀器控制、Driver Wrapper、SCPI/Binary 通訊、測試包版本與報告追溯。"
+  image: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/node-visa-test-runner-platform/assets/og-image.jpg"
+  url: "https://yuben75.github.io/agent-skill-lecture-builder/lectures/draft/node-visa-test-runner-platform/"

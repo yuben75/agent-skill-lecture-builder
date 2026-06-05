@@ -17,6 +17,12 @@ lectures:
     path: "lectures/draft/node-ni-visa-instrument-control"
     status: published
     description: "從 Server 測試知識管理、Client Local Runner，到 Driver Wrapper、SCPI/Binary 通訊與報告追溯的自動化測試平台規劃。"
+  - slug: node-visa-test-runner-platform
+    type: draft
+    title: "Node VISA Test Runner Platform：自動化儀器測試平台規劃"
+    path: "lectures/draft/node-visa-test-runner-platform"
+    status: published
+    description: "依據 Node 整合 NI-VISA 草稿，整理 Server 測試資產管理、Client Local Runner、Python/pyVISA 儀器控制、Driver Wrapper、SCPI/Binary 通訊與測試報告追溯。"
   - slug: example
     type: draft
     title: "用 Vibe Coding 與 Codex 打造可重複使用的講義網站"
